@@ -7,10 +7,21 @@
   <link rel="stylesheet" href="saasivu.css">
 </head>
 <body>
+
+
+
   <div id="container"> 
-    <input type="text" id="searchInput" placeholder="Syötä kaupunki">
-    <button onclick="searchWeather()">Hae sää</button> 
+    <h1 id="locationName" class="text"> Location name </h1>
+    <h2 id="locationTemperature" class="text"> Temperature </h2>
+    <div id="form">
+      <input class="text" type="text" id="searchInput" placeholder="Syötä kaupunki">
+      <button onclick="searchWeather()">Hae sää</button> 
+    </div>
+    <h1 id="weatherDescription" class="text"> Raining </h1>
+    <h2 id="weatherTimestamp" class="text"> Time </h2>
   </div>
   <script src="saascript.js"></script>
+
+
 </body>
 </html>
