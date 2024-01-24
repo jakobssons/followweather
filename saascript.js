@@ -19,7 +19,6 @@ async function getWeatherData(locationName) {
 function searchWeather() {
   const searchInput = document.getElementById('searchInput');
   const location = searchInput.value.trim();
-  console.log({location});
 
   if (location !== '') {
     setWeather(location);
@@ -36,7 +35,6 @@ function kelvinToCelsius(kelvin){
 
 async function setWeather(city) {
   const weatherData = await getWeatherData(city);
-  console.log({weatherData});
   let imageUrl = '';
 
   switch (weatherData.description) {
