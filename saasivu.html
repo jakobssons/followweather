@@ -13,10 +13,10 @@
   <div id="container"> 
     <h1 id="locationName" class="text"> Location name </h1>
     <h2 id="locationTemperature" class="text"> Temperature </h2>
-    <div id="form">
-      <input class="text" type="text" id="searchInput" placeholder="Syötä kaupunki">
-      <button onclick="searchWeather()">Hae sää</button> 
-    </div>
+    <form onsubmit= "handleSubmit(event)" id="form">
+      <input class= "text" type="text" id="searchInput" placeholder="Syötä kaupunki">
+      <button >Hae sää</button> 
+    </form>
     <h1 id="weatherDescription" class="text"> Raining </h1>
     <h2 id="weatherTimestamp" class="text"> Time </h2>
   </div>

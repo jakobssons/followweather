@@ -85,6 +85,10 @@ async function setWeather(city) {
 
 }
 
+function handleSubmit(e){
+  e.preventDefault()
+  searchWeather()
+};
 
 // Aseta kaupunki ja kutsu taustakuvan vaihtofunktiota
 const defaultCity = 'Vaasa';
