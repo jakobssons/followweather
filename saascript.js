@@ -1,20 +1,21 @@
-const apiKey = 'Tf998b7e16f0647ffbd4f4cc8431563b5';
+const apiKey = 'f998b7e16f0647ffbd4f4cc8431563b5';
 
-async function getWeatherData(city) {
-  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q={city}&appid={Tf998b7e16f0647ffbd4f4cc8431563b5}`;
+async function getWeatherData(locationName) {
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${locationName}&appid=${apiKey}`;
   
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();
     return data.weather[0].main;
   } catch (error) {
-    console.error('Virhe haettaessa säätietoja:', error);
+    console.error('Virhe haettaessa säätietoja', error);
   }
 }
 
 function searchWeather() {
   const searchInput = document.getElementById('searchInput');
   const location = searchInput.value.trim();
+  console.log({location});
 
   if (location !== '') {
     setBackgroundByWeather(location);
@@ -26,7 +27,7 @@ function searchWeather() {
 
 async function setBackgroundByWeather(city) {
   const weather = await getWeatherData(city);
-
+  console.log({weather});
   let imageUrl = '';
 
   switch (weather) {
@@ -37,7 +38,7 @@ async function setBackgroundByWeather(city) {
 
     // Sataa lunta
     case 'Snow':
-      imageUrl = 'sataalunta';
+      imageUrl = 'sataalunta.gif';
       break;
 
     // Sataa vettä  
