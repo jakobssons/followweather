@@ -6,7 +6,11 @@ async function getWeatherData(locationName) {
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();
-    return data.weather[0].main;
+
+    //  Poimitaan tarpeelliset säätiedot
+
+    const weatherData = {locationName: data.name, temperature: data.main.temp, timestamp: new Date(data.dt*1000), description: data.weather[0].main};
+    return weatherData;
   } catch (error) {
     console.error('Virhe haettaessa säätietoja', error);
   }
@@ -18,19 +22,24 @@ function searchWeather() {
   console.log({location});
 
   if (location !== '') {
-    setBackgroundByWeather(location);
+    setWeather(location);
     searchInput.value = ''; // Tyhjentää hakupalkin!
   } else {
     alert('Syötä sijainnin nimi ensin!');
   }
 }
 
-async function setBackgroundByWeather(city) {
-  const weather = await getWeatherData(city);
-  console.log({weather});
+    //  Muutetaan kelvinit oikeaksi yksiköksi
+function kelvinToCelsius(kelvin){
+  return kelvin - 272.15;
+}
+
+async function setWeather(city) {
+  const weatherData = await getWeatherData(city);
+  console.log({weatherData});
   let imageUrl = '';
 
-  switch (weather) {
+  switch (weatherData.description) {
     // on aurinkoista
     case 'Clear':
       imageUrl = 'aurinko.gif';
@@ -56,13 +65,27 @@ async function setBackgroundByWeather(city) {
         imageUrl = 'tuulee.gif';
         break;
 
-    default:
+      default:
       imageUrl = 'default.gif'; // Oletus taustakuva
   }
 
+  // Renderöidään uudet säätiedot
+
   document.body.style.backgroundImage = `url(${imageUrl})`;
+
+  const locationName = document.getElementById("locationName");
+  const locationTemperature = document.getElementById("locationTemperature");
+  const weatherDescription = document.getElementById("weatherDescription");
+  const weatherTimestamp = document.getElementById("weatherTimestamp");
+  
+  locationName.textContent = weatherData.locationName;
+  locationTemperature.textContent = `${kelvinToCelsius(weatherData.temperature).toFixed(1)} °C`;
+  weatherDescription.textContent = weatherData.description;
+  weatherTimestamp.textContent = weatherData.timestamp.toLocaleTimeString("fi-Fi", {hour: "2-digit", minute: "2-digit"} );
+
 }
+
 
 // Aseta kaupunki ja kutsu taustakuvan vaihtofunktiota
 const defaultCity = 'Vaasa';
-setBackgroundByWeather(defaultCity);
+setWeather(defaultCity);
