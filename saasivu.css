@@ -28,30 +28,33 @@ body {
 #form {
     display: flex;
     flex-direction: column;
-    margin: 0 5%;
+    margin: 0 10%;
     flex: 2;
 }
 
 .text {
     text-align: center;
     flex: 4 ;
-    font-family: SummerPixel;
+    font-family: PublicPixel;
 }
 
 h1 {
     font-size: 3rem;
+    font-weight: 300;
 }
 
 h2 {
     font-size: 2rem;
+    font-weight: 200;
 }
 
 button {
-    font-size: 2rem;
-    font-family: SummerPixel;
+    font-size: 1.5rem;
+    font-family: PublicPixel;
+    height: 50px;
 }
 
 @font-face {
-src: url(fonts/SummerPixelWide22Regular-4BoW4.ttf) format("truetype");
-font-family: SummerPixel;
+src: url(fonts/PublicPixel-z84yD.ttf) format("truetype");
+font-family: PublicPixel;
 }
