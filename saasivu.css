@@ -7,20 +7,51 @@ body {
     height: 100vh;
     background-size: cover;
     background-position: center;
-    transition: background-image 1s ease-in-out;
+    transition: background-image 1.5s ease-in-out;
 }
 
 #searchInput {
     margin-bottom: 20px;
     padding: 8px;
-    font-size: 16px;
-    text-align: center;
+    font-size: 1.5rem;
 }
 
 #container {
     display: flex;
     flex-direction: column;
-    padding: 15% 10%;
+    margin: 55% 70%;
     background-color: rgba(105, 105, 105, 0.671);
     border-radius: 5%;
+    flex: 1;
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 5%;
+    flex: 2;
+}
+
+.text {
+    text-align: center;
+    flex: 4 ;
+    font-family: SummerPixel;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+button {
+    font-size: 2rem;
+    font-family: SummerPixel;
+}
+
+@font-face {
+src: url(fonts/SummerPixelWide22Regular-4BoW4.ttf) format("truetype");
+font-family: SummerPixel;
 }
