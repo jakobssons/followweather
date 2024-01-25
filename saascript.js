@@ -13,7 +13,6 @@ async function getWeatherData(locationName) {
     const data = await response.json();
 
     //  Poimitaan tarpeelliset säätiedot
-    console.log(data)
     const weatherData = {locationName: data.name, temperature: data.main.temp, timestamp: createDateWithOffset(data.dt, data.timezone), description: data.weather[0].main};
     return weatherData;
   } catch (error) {
